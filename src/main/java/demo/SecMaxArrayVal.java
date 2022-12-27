@@ -1,9 +1,5 @@
 package demo;
 
-/**
- * Hello world!
- *
- */
 public class SecMaxArrayVal 
 {
     public static void main( String[] args )
