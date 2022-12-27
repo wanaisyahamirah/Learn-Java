@@ -31,7 +31,7 @@ public class TicTacToe {
             System.out.print("It's a tie ! No one wins ! Please try again.");
         }
 
-        System.out.println(" (" + get_winner_evidence(get_row_number_starter(arrBoard), arrBoard) + ") ");
+        System.out.println(" (" + getWinnerMatrix(getWinningStarterNumber(arrBoard), arrBoard) + ") ");
 
     }
 
@@ -67,7 +67,7 @@ public class TicTacToe {
         return 0;
     }
 
-    public static int get_row_number_starter(int[][] arrBoard) {
+    public static int getWinningStarterNumber(int[][] arrBoard) {
         int number = 0;
         boolean win = false;
         for (int i = 0; i < arrBoard.length; i++) {
@@ -96,15 +96,15 @@ public class TicTacToe {
         return number;
     }
 
-    public static String get_winner_evidence(int row_number, int[][] arrboard) {
+    public static String getWinnerMatrix(int winningStarterNumber, int[][] arrboard) {
         String evidence = "";
         for (int i = 0; i < arrboard.length; i++) {
             if(i == 0) {
-                evidence = String.valueOf(row_number);
+                evidence = String.valueOf(winningStarterNumber);
             } else {
-                evidence = evidence.concat("," + row_number);
+                evidence = evidence.concat("," + winningStarterNumber);
             }
-            row_number++;
+            winningStarterNumber++;
         }
         return evidence;
     }
