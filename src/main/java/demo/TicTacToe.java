@@ -96,15 +96,15 @@ public class TicTacToe {
         return number;
     }
 
-    public static String get_winner_evidence(int row_number, int[][] arrboard) {
+    public static String get_winner_evidence(int starter_number, int[][] arrboard) {
         String evidence = "";
         for (int i = 0; i < arrboard.length; i++) {
             if(i == 0) {
-                evidence = String.valueOf(row_number);
+                evidence = String.valueOf(starter_number);
             } else {
-                evidence = evidence.concat("," + row_number);
+                evidence = evidence.concat("," + starter_number);
             }
-            row_number++;
+            starter_number++;
         }
         return evidence;
     }
