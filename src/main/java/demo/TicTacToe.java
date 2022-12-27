@@ -99,7 +99,11 @@ public class TicTacToe {
     public static String get_winner_evidence(int row_number, int[][] arrboard) {
         String evidence = "";
         for (int i = 0; i < arrboard.length; i++) {
-            evidence = evidence.concat(String.valueOf(row_number));                    
+            if(i == 0) {
+                evidence = String.valueOf(row_number);
+            } else {
+                evidence = evidence.concat("," + row_number);
+            }
             row_number++;
         }
         return evidence;
