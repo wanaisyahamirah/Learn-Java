@@ -14,24 +14,25 @@ public class TicTacToe {
         int O = -1;
 
         int[][] arrBoard = {
-                { -1, 1, 0 },
-                { 1, -1, 1 },
-                { 0, 0, -1 }
+                { 1, 1, 0 },
+                { 1, 1, 1 },
+                { 0, 0, 0 }
         };
 
         int winner = evaluateWinner(arrBoard);
 
-        printBoard(arrBoard);
+        System.out.println("Is won by row ? :: " + winByRow(arrBoard));
+        System.out.println("Row number starter is :: " + get_row_number_starter(arrBoard));
 
         if (winner == X) {
-            System.out.print("\nX (1) Won");
+            System.out.print("Output :: X(1) Won");
         } else if (winner == O) {
-            System.out.print("\nO (-1) Won");
+            System.out.print("Output :: O(-1) Won");
         } else {
-            System.out.print("It's a tie ! No one wins ! Please try again.");
+            System.out.print("Output :: It's a tie ! No one wins ! Please try again.");
         }
-
-        System.out.println(" (" + get_winner_evidence(get_row_number_starter(arrBoard), arrBoard) + ") ");
+        
+        System.out.println(" (" +get_winner_evidence(get_row_number_starter(arrBoard), arrBoard) + ") ");
 
     }
 
@@ -67,11 +68,28 @@ public class TicTacToe {
         return 0;
     }
 
+    public static boolean winByRow(int[][] arrBoard) {
+        boolean match = false;
+        for (int i = 0; i < arrBoard.length; i++) {
+            if (match)
+                break;
+            for (int j = 0; j < arrBoard.length; j++) {
+                if (j == arrBoard.length - 1)
+                    break;
+                if (arrBoard[i][j] != 0 && arrBoard[i][j] == arrBoard[i][j + 1]) {
+                    match = true;
+                    break;
+                }
+            }
+        }
+        return match;
+    }
+
     public static int get_row_number_starter(int[][] arrBoard) {
         int number = 0;
-        boolean win = false;
+        boolean match = false;
         for (int i = 0; i < arrBoard.length; i++) {
-            if (win)
+            if (match)
                 break;
             for (int j = 0; j < arrBoard.length; j++) {
                 if (j == arrBoard.length - 1) {
@@ -79,7 +97,7 @@ public class TicTacToe {
                 }
                 if (arrBoard[i][j] != 0 && arrBoard[i][j] == arrBoard[i][j + 1]) {
                     if (j == arrBoard.length - 2) {
-                        win = true;
+                        match = true;
                         number = number - 1;
                         break;
                     }
@@ -96,15 +114,15 @@ public class TicTacToe {
         return number;
     }
 
-    public static String get_winner_evidence(int starter_number, int[][] arrboard) {
+    public static String get_winner_evidence(int row_number, int[][] arrboard) {
         String evidence = "";
         for (int i = 0; i < arrboard.length; i++) {
-            if(i == 0) {
-                evidence = String.valueOf(starter_number);
+            if (i == 0) {
+                evidence = String.valueOf(row_number);
             } else {
-                evidence = evidence.concat("," + starter_number);
+                evidence = evidence.concat("," + row_number);
             }
-            starter_number++;
+            row_number++;
         }
         return evidence;
     }
