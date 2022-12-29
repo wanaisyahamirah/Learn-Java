@@ -1,5 +1,6 @@
 package demo;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -22,8 +23,11 @@ public class ReversedSentenceTest
 
         List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput) ;
 
-        assertTrue(expectedList.get(0).equals(resultList.get(0)));
-		assertTrue(expectedList.get(1).equals(resultList.get(1)));
+        for(int i = 0; i < resultList.size(); i ++){
+            assertTrue(resultList.get(i).equals(expectedList.get(i)));
+            assertFalse(!resultList.get(i).equals(expectedList.get(i)));
+        }
+        
     }
 
 }
