@@ -21,13 +21,24 @@ public class ReversedSentenceTest
 		expectedList.add("Hello");
 		expectedList.add("World");
 
-        List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput) ;
+        List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput);
 
         for(int i = 0; i < resultList.size(); i ++){
             assertTrue(resultList.get(i).equals(expectedList.get(i)));
             assertFalse(!resultList.get(i).equals(expectedList.get(i)));
         }
         
+    }
+
+    @Test
+    public void printReversedTest(){
+
+        String expectedInput = "Hello World";
+        String expectedOutput = "World Hello";
+
+        List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput);
+        assertTrue(ReversedSentence.concatReveseString(resultList).equals(expectedOutput));
+
     }
 
 }

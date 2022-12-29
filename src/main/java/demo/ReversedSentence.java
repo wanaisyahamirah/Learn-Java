@@ -20,7 +20,7 @@ public class ReversedSentence {
 
             List<String> individualWords = splitInputBySpace(input);
 
-            printReversed(individualWords);
+            System.out.println(concatReveseString(individualWords));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,10 +40,18 @@ public class ReversedSentence {
         return indWordsArray;
     }
 
-    public static void printReversed(List<String> arrayList) {
+    public static String concatReveseString(List<String> arrayList) {
+
+        String concatReversed = "";
         for (int i = arrayList.size() - 1; i >= 0; i--) {
-            System.out.print(arrayList.get(i) + " ");
+            if (i == arrayList.size() -1){
+                concatReversed = concatReversed.concat(arrayList.get(i)); //System.out.print(arrayList.get(i) + " ");
+            }else{
+                concatReversed = concatReversed.concat(" " + arrayList.get(i)); //System.out.print(arrayList.get(i) + " ");
+            }
+            
         }
+        return concatReversed;
     }
 
 }
