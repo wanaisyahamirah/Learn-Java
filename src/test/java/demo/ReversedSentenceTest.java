@@ -15,11 +15,13 @@ public class ReversedSentenceTest
     public void splitInputBySpaceTest()
     {
 
-        String expectedInput = "Hello World";
+        String expectedInput = "Hello how are you";
 
         List<String> expectedList=new ArrayList<>();
 		expectedList.add("Hello");
-		expectedList.add("World");
+		expectedList.add("how");
+        expectedList.add("are");
+        expectedList.add("you");
 
         List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput);
 
@@ -33,8 +35,13 @@ public class ReversedSentenceTest
     @Test
     public void printReversedTest(){
 
-        String expectedInput = "Hello World";
-        String expectedOutput = "World Hello";
+        // Hello how are you
+        // I am a Human
+        String expectedInput = "I am a Human";
+        
+        // you are how Hello
+        // Human a am I
+        String expectedOutput = "Human a am I";
 
         List<String> resultList = ReversedSentence.splitInputBySpace(expectedInput);
         assertTrue(ReversedSentence.concatReveseString(resultList).equals(expectedOutput));
